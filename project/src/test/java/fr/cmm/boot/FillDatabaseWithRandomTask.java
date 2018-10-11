@@ -46,7 +46,7 @@ public class FillDatabaseWithRandomTask {
     private Recipe randomRecipe() throws IOException {
         Recipe recipe = new Recipe();
 
-        recipe.setTitle("La choucroute aux champignons " + count++);
+        recipe.setTitle("La choucroute aux asperges " + count++);
         recipe.setDate(new Date());
         recipe.setIntro("De la choucroute, des champignons et un peu d'espiéglerie");
         recipe.setText("du texte\ndu texte\ndu texte\net encore du texte.");
