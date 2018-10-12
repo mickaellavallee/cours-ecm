@@ -15,10 +15,13 @@ public class SearchForm {
     }
 
     public int getPageIndex() {
-        return pageIndex;
+            return pageIndex;
     }
 
     public void setPageIndex(int pageIndex) {
-        this.pageIndex = pageIndex;
+        if (pageIndex > 0)
+            this.pageIndex = pageIndex;
+        else
+            this.pageIndex = 1;
     }
 }
