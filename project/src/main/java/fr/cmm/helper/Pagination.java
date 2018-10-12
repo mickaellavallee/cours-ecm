@@ -1,5 +1,6 @@
 package fr.cmm.helper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -29,14 +30,21 @@ public class Pagination {
     }
 
     public int getPageCount() {
-        if (count%pageSize == 0)
+        if (count == 0)
+            return 1;
+        else if (count%pageSize == 0)
             return (int) count / pageSize;
         else
             return (int) count / pageSize + 1;
     }
 
     public List<Integer> getPages() {
-        return asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        int nbpages = this.getPageCount();
+        List<Integer> list = new ArrayList<Integer>();
+        for(int i = 1; i <= nbpages; i++){
+            list.add(i);
+        }
+        return list;
     }
 
     public int getPageIndex() {
