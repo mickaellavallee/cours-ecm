@@ -1,4 +1,4 @@
-<%@ tag body-content="empty" pageEncoding="UTF-8" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -11,6 +11,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="/">Cooking Miam Miam</a>
+
         </div>
 
         <div class="collapse navbar-collapse" id="navbar-collapse">
@@ -19,5 +20,6 @@
                 <li><a href="/recette-du-moment">Recette du moment</a></li>
             </ul>
         </div>
+
     </div>
 </nav>
