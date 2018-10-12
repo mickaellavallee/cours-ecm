@@ -63,6 +63,8 @@ public class IndexController {
         return "recette-du-moment";
     }
 
+
+
     private Columns randomColumns() {
         Columns columns = new Columns();
 
