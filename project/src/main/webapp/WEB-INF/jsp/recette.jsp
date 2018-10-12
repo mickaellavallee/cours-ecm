@@ -18,9 +18,9 @@
 <body>
     <fragments:header/>
 
-    <div class="container">
-        <fragments:recipe recipe="${recipe}" />
-    </div>
+        <div class="container">
+            <fragments:recipe recipe="${recipe}" />
+        </div>
 
     <fragments:footer />
 

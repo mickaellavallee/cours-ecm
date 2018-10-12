@@ -16,10 +16,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import javax.inject.Inject;
 import java.util.List;
 
-@ResponseStatus(value = HttpStatus.NOT_FOUND)
-class ResourceNotFoundException extends RuntimeException {
-}
-
 @Controller
 public class IndexController {
     @Inject
