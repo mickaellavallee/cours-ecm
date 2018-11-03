@@ -4,11 +4,15 @@ import java.util.*;
 
 import javax.inject.Inject;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+
 import org.bson.types.ObjectId;
 import org.hibernate.validator.constraints.Length;
 import org.jongo.MongoCollection;
 import org.jongo.MongoCursor;
 import org.springframework.stereotype.Service;
+import org.json.JSONArray;
 
 import fr.cmm.domain.Recipe;
 import fr.cmm.helper.PageQuery;
@@ -55,6 +59,36 @@ public class RecipeService {
             return recipeCollection.findOne(new ObjectId(id)).as(Recipe.class);
         else
             return null;
+    }
+
+    public Iterable<Recipe> findByQueryAPI(PageQuery query) {
+        String mongoQuery = "{}";
+        String[] params = {};
+        if (query.getTag() != null && !"".equals(query.getTag())) {
+            mongoQuery = "{tags: #}";
+            params = new String[] {query.getTag()};
+        }
+        return recipeCollection
+                .find(mongoQuery, (Object[]) params)
+                .sort("{date:-1}")
+                .skip(query.skip())
+                .limit(query.getSize())
+                .as(Recipe.class);
+    }
+
+    public JSONArray toJsonWithPage(Iterable<Recipe> list,int pageSize) {
+        Gson gson = new Gson();
+        JSONArray tabJSON = new JSONArray();
+        int counter=0;
+        int page;
+        for(Recipe recipe : list) {
+            page = counter/pageSize+1;
+            JSONObject json1 = new JSONObject(gson.toJson(recipe));
+            JSONObject json2 = new JSONObject("{page: "+page+"}");
+            tabJSON.put(mergeJSONObjects(json1,json2));
+            counter = counter +1;
+        }
+        return tabJSON;
     }
 
 
