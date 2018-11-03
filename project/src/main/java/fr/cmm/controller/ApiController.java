@@ -15,7 +15,7 @@ public class ApiController{
 
     @Inject
     private RecipeService recipeService;
-    
+
     @RequestMapping("/api/recipes")
     public String liste(){
         return "Liste";
